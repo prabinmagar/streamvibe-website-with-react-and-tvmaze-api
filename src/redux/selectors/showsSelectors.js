@@ -64,3 +64,5 @@ export const selectShowDescription = createSelector(
   [selectShowDetail],
   (showDetail) => showDetail?.summary
 );
+
+export const selectSearchResults = (state) => state?.shows?.searchResults || [];

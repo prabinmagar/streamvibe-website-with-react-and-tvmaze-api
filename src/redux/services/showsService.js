@@ -15,9 +15,16 @@ const fetchSingleShow = async (showId) => {
   return response.data;
 };
 
+const fetchSearchResults = async (query) => {
+  const fetchSearchResultsUrl = urlConstants.searchShowsUrl + `${query}`;
+  const response = await axios.get(fetchSearchResultsUrl);
+  return response.data;
+};
+
 const showsService = {
   fetchAllShows,
   fetchSingleShow,
+  fetchSearchResults,
 };
 
 export default showsService;

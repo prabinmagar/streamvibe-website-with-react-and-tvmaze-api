@@ -3,8 +3,23 @@ import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./styles/global/GlobalStyles";
 import { theme } from "./styles/theme/theme";
 import { BaseLayout } from "./components";
-import { Home, PageNotFound, ShowDetail, Shows } from "./screens";
+import { Home, PageNotFound, Search, ShowDetail, Shows } from "./screens";
 import routeConstants from "./constant/routeConstants";
+
+// Separate routes configuration
+const routes = [
+  {
+    path: routeConstants.HOME,
+    element: <BaseLayout />,
+    children: [
+      { path: "/", element: <Home /> },
+      { path: routeConstants.SHOWS, element: <Shows /> },
+      { path: `${routeConstants.SHOWS}/:id`, element: <ShowDetail /> },
+      { path: routeConstants.SEARCH, element: <Search /> },
+    ],
+  },
+  { path: "*", element: <PageNotFound /> },
+];
 
 function App() {
   return (
@@ -13,15 +28,18 @@ function App() {
         <Router>
           <GlobalStyles />
           <Routes>
-            <Route path={routeConstants.HOME} element={<BaseLayout />}>
-              <Route index element={<Home />} />
-              <Route path={routeConstants.SHOWS} element={<Shows />} />
-              <Route
-                path={routeConstants.SHOWS + `/:id`}
-                element={<ShowDetail />}
-              />
-            </Route>
-            <Route path="*" element={<PageNotFound />} />
+            {routes.map((route, index) => (
+              <Route key={index} path={route.path} element={route.element}>
+                {route.children &&
+                  route.children.map((childRoute, childIndex) => (
+                    <Route
+                      key={childIndex}
+                      path={childRoute.path}
+                      element={childRoute.element}
+                    />
+                  ))}
+              </Route>
+            ))}
           </Routes>
         </Router>
       </ThemeProvider>

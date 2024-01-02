@@ -21,8 +21,9 @@ export const PaginationWrapper = styled.div`
     }
     &:disabled {
       opacity: 0.5;
+      cursor: default;
     }
-  }
+  } 
   .paginate-prev,
   .paginate-next {
     img {

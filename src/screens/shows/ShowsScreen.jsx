@@ -61,7 +61,7 @@ const ShowsScreen = () => {
           showsData={latestPremieredShowsData}
         />
       )}
-      {allShowsData?.length > 0 && <ShowsList showsData={allShowsData} />}
+      {allShowsData?.length > 0 && <ShowsList showsData={allShowsData} showsTitle = {"All Shows"} />}
       <FreeTrial />
     </div>
   );

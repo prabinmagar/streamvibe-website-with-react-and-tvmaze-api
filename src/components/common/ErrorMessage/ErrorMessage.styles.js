@@ -2,17 +2,14 @@ import styled from "styled-components";
 import { media } from "../../../styles/theme/theme";
 
 export const ErrorMessageWrapper = styled.div`
-  margin-top: 120px;
   padding: 60px 0;
 
   ${media.lg`
     padding: 30px 0;
-    margin-top: 100px;
   `}
 
   ${media.sm`
     padding: 20px 0;
-    margin-top: 80px;
   `}
 
   .error-content {

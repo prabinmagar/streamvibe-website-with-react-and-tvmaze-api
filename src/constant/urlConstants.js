@@ -4,7 +4,7 @@ const urlConstants = {
   apiBaseUrl: baseEndpoint,
   fetchShowsUrl: `${baseEndpoint}/shows`,
   seasonsCastEpisodesEmbed: `?embed[]=episodes&embed[]=cast&embed[]=seasons`,
-  searchShowsUrl: `${baseEndpoint}/search/shows`,
+  searchShowsUrl: `${baseEndpoint}/search/shows?q=`,
 };
 
 export default urlConstants;

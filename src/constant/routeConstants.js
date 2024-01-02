@@ -1,6 +1,7 @@
 const routeConstants = {
     HOME: "/",
-    SHOWS: "/shows"
+    SHOWS: "/shows",
+    SEARCH: "/search"
 }
 
 export default routeConstants;

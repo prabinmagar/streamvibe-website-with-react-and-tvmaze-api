@@ -1,4 +1,5 @@
 import { Icons } from "../../../assets/icons";
+import routeConstants from "../../../constant/routeConstants";
 import { BaseLinkPrimary } from "../../../styles/components/Button";
 import {
   Container,
@@ -25,7 +26,7 @@ const Banner = () => {
             can also create your own watchlists, so you can easily find the
             content you want to watch.
           </Paragraph>
-          <BaseLinkPrimary>
+          <BaseLinkPrimary to={routeConstants.SHOWS}>
             <span className="btn-icon">
               <img src={Icons.Play} alt="" />
             </span>

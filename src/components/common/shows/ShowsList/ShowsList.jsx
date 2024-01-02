@@ -7,7 +7,7 @@ import { useState } from "react";
 import { Icons } from "../../../../assets/icons";
 import { PaginationWrapper, ShowsListWrapper } from "./ShowsList.styles";
 
-const ShowsList = ({ showsData }) => {
+const ShowsList = ({ showsData, showsTitle }) => {
   // pagination
   const [currentPage, setCurrentPage] = useState(1);
   const showsPerPage = 40;
@@ -36,7 +36,7 @@ const ShowsList = ({ showsData }) => {
 
   return (
     <ShowsListWrapper>
-      <SectionTitle title={"All Shows"} />
+      <SectionTitle title={showsTitle} />
       <Container>
         <div className="shows-list grid">
           {currentShows?.map((show) => (
@@ -87,5 +87,6 @@ const ShowsList = ({ showsData }) => {
 export default ShowsList;
 
 ShowsList.propTypes = {
-  showsData: PropTypes.array,
+  showsData: PropTypes.array.isRequired,
+  showsTitle: PropTypes.string.isRequired,
 };

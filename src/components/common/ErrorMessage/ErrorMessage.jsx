@@ -22,7 +22,7 @@ const ErrorMessage = ({ error }) => {
   };
 
   return (
-    <ErrorMessageWrapper className="text-center">
+    <ErrorMessageWrapper className="text-center top-spacing-fix">
       <Container>
         <div className="error-content flex flex-col justify-between items-center">
           {dispalyErrorImage()}

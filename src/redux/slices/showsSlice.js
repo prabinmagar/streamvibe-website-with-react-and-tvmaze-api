@@ -2,38 +2,36 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import showsService from "../services/showsService";
 import errorConstants from "../../constant/errorConstants";
 
+// error handling
+const handleErrorResponse = (error, thunkAPI) => {
+  if (error.response) {
+    const { status, data } = error.response;
+    let code = null;
+    if (status === 404) {
+      code = errorConstants.ERR_404;
+    } else if (status === 429) {
+      code = errorConstants.ERR_429;
+    }
+    return thunkAPI.rejectWithValue({
+      code,
+      message: data.message || "Server Error",
+    });
+  } else if (error.request) {
+    return thunkAPI.rejectWithValue({
+      code: error.code,
+      message: "Network Error",
+    });
+  }
+  return thunkAPI.rejectWithValue({ code: "ERR_GENERIC", message: "Error" });
+};
+
 export const fetchAllShows = createAsyncThunk(
   "shows/fetch/all",
   async (_, thunkAPI) => {
     try {
       return await showsService.fetchAllShows();
     } catch (error) {
-      if (error.response) {
-        const statusCode = error.response.status;
-        const errorMessage = error.response.data.message;
-
-        let errorCode = null;
-        if (statusCode === 404) {
-          errorCode = errorConstants.ERR_404;
-        } else if (statusCode === 429) {
-          errorCode = errorConstants.ERR_429;
-        }
-
-        return thunkAPI.rejectWithValue({
-          code: errorCode,
-          message: errorMessage || "Server Error",
-        });
-      } else if (error.request) {
-        return thunkAPI.rejectWithValue({
-          code: error.code,
-          message: "Network Error",
-        });
-      } else {
-        return thunkAPI.rejectWithValue({
-          code: "ERR_GENERIC",
-          message: "Error",
-        });
-      }
+      return handleErrorResponse(error, thunkAPI);
     }
   }
 );
@@ -42,35 +40,21 @@ export const fetchSingleShow = createAsyncThunk(
   "shows/fetch/single",
   async (showId, thunkAPI) => {
     try {
-      // Resetting singleShow state to null before fetching new data
       thunkAPI.dispatch(showsSlice.actions.resetSingleShow());
       return await showsService.fetchSingleShow(showId);
     } catch (error) {
-      if (error.response) {
-        const statusCode = error.response.status;
-        const errorMessage = error.response.data.message;
-        let errorCode = null;
-        if (statusCode === 404) {
-          errorCode = errorConstants.ERR_404;
-        } else if (statusCode === 429) {
-          errorCode = errorConstants.ERR_429;
-        }
+      return handleErrorResponse(error, thunkAPI);
+    }
+  }
+);
 
-        return thunkAPI.rejectWithValue({
-          code: errorCode,
-          message: errorMessage || "Server Error",
-        });
-      } else if (error.request) {
-        return thunkAPI.rejectWithValue({
-          code: error.code,
-          message: "Network Error",
-        });
-      } else {
-        return thunkAPI.rejectWithValue({
-          code: "ERR_GENERIC",
-          message: "Error",
-        });
-      }
+export const fetchSearchResults = createAsyncThunk(
+  "shows/fetch/search",
+  async (query, thunkAPI) => {
+    try {
+      return await showsService.fetchSearchResults(query);
+    } catch (error) {
+      return handleErrorResponse(error, thunkAPI);
     }
   }
 );
@@ -78,17 +62,21 @@ export const fetchSingleShow = createAsyncThunk(
 const initialState = {
   shows: [],
   singleShow: null,
+  searchResults: [],
   isLoading: {
     fetchAllShows: false,
     fetchSingleShow: false,
+    fetchSearchResults: false,
   },
   isError: {
     fetchAllShows: false,
     fetchSingleShow: false,
+    fetchSearchResults: false,
   },
   isSuccess: {
     fetchAllShows: false,
     fetchSingleShow: false,
+    fetchSearchResults: false,
   },
   error: null,
 };
@@ -99,15 +87,17 @@ const showsSlice = createSlice({
   reducers: {
     resetSingleShow: (state) => {
       state.singleShow = null;
-      // state.isLoading.fetchSingleShow = false;
-      // state.isSuccess.fetchSingleShow = false;
-      // state.isError.fetchSingleShow = false;
+    },
+    resetSearchResults: (state) => {
+      state.searchResults = [];
     },
   },
   extraReducers(builder) {
     builder
       .addCase(fetchAllShows.pending, (state) => {
         state.isLoading.fetchAllShows = true;
+        state.isSuccess.fetchAllShows = false;
+        state.isError.fetchAllShows = false;
       })
       .addCase(fetchAllShows.fulfilled, (state, action) => {
         state.shows = action.payload;
@@ -123,6 +113,8 @@ const showsSlice = createSlice({
       })
       .addCase(fetchSingleShow.pending, (state) => {
         state.isLoading.fetchSingleShow = true;
+        state.isSuccess.fetchSingleShow = false;
+        state.isError.fetchSingleShow = false;
       })
       .addCase(fetchSingleShow.fulfilled, (state, action) => {
         state.singleShow = action.payload;
@@ -135,8 +127,26 @@ const showsSlice = createSlice({
         state.isSuccess.fetchSingleShow = false;
         state.isError.fetchSingleShow = true;
         state.error = action.payload;
+      })
+      .addCase(fetchSearchResults.pending, (state) => {
+        state.isLoading.fetchSearchResults = true;
+        state.isSuccess.fetchSearchResults = false;
+        state.isError.fetchSearchResults = false;
+      })
+      .addCase(fetchSearchResults.fulfilled, (state, action) => {
+        state.isLoading.fetchSearchResults = false;
+        state.isSuccess.fetchSearchResults = true;
+        state.isError.fetchSearchResults = false;
+        state.searchResults = action.payload;
+      })
+      .addCase(fetchSearchResults.rejected, (state, action) => {
+        state.isLoading.fetchSearchResults = false;
+        state.isSuccess.fetchSearchResults = false;
+        state.isError.fetchSearchResults = true;
+        state.error = action.payload;
       });
   },
 });
 
+export const { resetSearchResults } = showsSlice.actions;
 export default showsSlice.reducer;

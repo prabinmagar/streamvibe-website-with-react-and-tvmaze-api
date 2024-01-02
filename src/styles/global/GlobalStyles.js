@@ -338,4 +338,16 @@ export const GlobalStyles = createGlobalStyle`
             padding: 20px 0;
         `}
     }
+
+    .top-spacing-fix{
+        margin-top: 120px;
+
+        ${media.lg`
+            margin-top: 100px;
+        `}
+
+        ${media.sm`
+            margin-top: 80px;
+        `}
+    }
 `;

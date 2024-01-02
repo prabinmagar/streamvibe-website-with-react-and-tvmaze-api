@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { media } from "../../../../styles/theme/theme";
 
 export const ShowsBannerWrapper = styled.section`
-  margin-top: 120px;
   .banner-img {
     min-height: 74vh;
     border-radius: 12px;
@@ -14,12 +13,10 @@ export const ShowsBannerWrapper = styled.section`
 
     ${media.lg`
       padding: 30px 20px;
-      margin-top: 100px;
     `}
 
     ${media.sm`
       padding: 20px 16px;
-      margin-top: 80px;
     `}
   }
   .banner-content {

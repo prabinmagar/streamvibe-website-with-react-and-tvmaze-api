@@ -12,7 +12,7 @@ import { ShowsBannerWrapper } from "./ShowsBanner.styles";
 
 const ShowsBanner = ({ showData }) => {
   return (
-    <ShowsBannerWrapper>
+    <ShowsBannerWrapper className="top-spacing-fix">
       <Container>
         <div
           className="banner-img flex justify-center items-end"
@@ -21,10 +21,14 @@ const ShowsBanner = ({ showData }) => {
           }}
         >
           <div className="banner-content text-center">
-            <HeadingTitle className="banner-title">{showData?.name}</HeadingTitle>
+            <HeadingTitle className="banner-title">
+              {showData?.name}
+            </HeadingTitle>
             <div
               className="summary-text"
-              dangerouslySetInnerHTML={{ __html: showData?.summary?.substring(0, 240) + " ..." }}
+              dangerouslySetInnerHTML={{
+                __html: showData?.summary?.substring(0, 240) + " ...",
+              }}
             ></div>
             <div className="banner-info flex flex-col items-center">
               <BaseLinkPrimary
