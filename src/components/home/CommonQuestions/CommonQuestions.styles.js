@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { media } from "../../../styles/theme/theme";
+import { media, theme } from "../../../styles/theme/theme";
 
 export const CommonQWrapper = styled.section`
   .common-q-list {
@@ -66,7 +66,7 @@ export const CommonQItemWrapper = styled.div`
     width: 52px;
     height: 54px;
     border-radius: 10px;
-    border: 1px solid ${(props) => props.theme.colors.black15};
+    border: 1px solid ${theme.colors.black15};
 
     ${media.lg`
         width: 46px;
@@ -85,7 +85,7 @@ export const CommonQItemWrapper = styled.div`
   .item-text {
     max-height: 0;
     overflow: hidden;
-    transition: ${(props) => props.theme.transitions.allEaseInOut};
+    transition: ${theme.transitions.allEaseInOut};
     &.show {
       max-height: 100%;
     }

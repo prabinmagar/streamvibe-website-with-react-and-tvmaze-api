@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { media } from "../../../styles/theme/theme";
+import { media, theme } from "../../../styles/theme/theme";
 
 export const StreamDevicesWrapper = styled.section`
   .stream-dev-list {
@@ -17,10 +17,10 @@ export const StreamDevicesWrapper = styled.section`
   }
 
   .stream-dev-item {
-    background: ${(props) => props.theme.linearGradient.full};
+    background: ${theme.linearGradient.full};
     padding: 40px;
     border-radius: 12px;
-    border: 1px solid ${(props) => props.theme.colors.black15};
+    border: 1px solid ${theme.colors.black15};
 
     ${media.xxl`
       padding: 30px;
@@ -38,7 +38,7 @@ export const StreamDevicesWrapper = styled.section`
       width: 60px;
       height: 60px;
       border-radius: 8px;
-      border: 1px solid ${(props) => props.theme.colors.black15};
+      border: 1px solid ${theme.colors.black15};
     }
 
     .icon-wrapper {

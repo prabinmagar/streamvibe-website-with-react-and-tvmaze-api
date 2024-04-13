@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { media } from "../../../../styles/theme/theme";
+import { media, theme } from "../../../../styles/theme/theme";
 
 export const ShowsBannerWrapper = styled.section`
   .banner-img {
@@ -25,7 +25,7 @@ export const ShowsBannerWrapper = styled.section`
     margin-left: auto;
 
     .summary-text {
-      color: ${(props) => props.theme.colors.white};
+      color: ${theme.colors.white};
       p {
         ${media.lg`
         font-size: 16px!important;
@@ -34,7 +34,7 @@ export const ShowsBannerWrapper = styled.section`
     }
   }
   .banner-title {
-    text-shadow: 2px 2px 4px ${(props) => props.theme.colors.black15};
+    text-shadow: 2px 2px 4px ${theme.colors.black15};
   }
   .banner-info {
     margin-top: 24px;

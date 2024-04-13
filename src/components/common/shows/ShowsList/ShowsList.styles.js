@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { media } from "../../../../styles/theme/theme";
+import { media, theme } from "../../../../styles/theme/theme";
 
 export const PaginationWrapper = styled.div`
   margin-top: 40px;
@@ -12,12 +12,12 @@ export const PaginationWrapper = styled.div`
     width: 48px;
     height: 48px;
     border-radius: 0;
-    border: 1px solid ${(props) => props.theme.colors.black15};
-    background: ${(props) => props.theme.colors.secondary};
+    border: 1px solid ${theme.colors.black15};
+    background: ${theme.colors.secondary};
 
     &.active {
-      background: ${(props) => props.theme.colors.primary};
-      border: 1px solid ${(props) => props.theme.colors.primary};
+      background: ${theme.colors.primary};
+      border: 1px solid ${theme.colors.primary};
     }
     &:disabled {
       opacity: 0.5;

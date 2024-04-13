@@ -23,6 +23,8 @@ import GridGrey from "./icons/grid_grey.svg";
 import StarGrey from "./icons/star_grey.svg";
 import LanguageGrey from "./icons/language_grey.svg";
 import CalendarGrey from "./icons/calendar_grey.svg";
+import Menu from "./icons/menu.svg";
+import Close from "./icons/close.svg";
 
 export const Icons = {
   ArrowLeft,
@@ -46,5 +48,5 @@ export const Icons = {
   Star,
   ArrowDownGrey,
   ArrowUpGrey,
-  GridGrey, StarGrey, LanguageGrey, CalendarGrey
+  GridGrey, StarGrey, LanguageGrey, CalendarGrey, Menu, Close
 };

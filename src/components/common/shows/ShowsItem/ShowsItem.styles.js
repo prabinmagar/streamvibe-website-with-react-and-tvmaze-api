@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { theme } from "../../../../styles/theme/theme";
 
 export const ShowsItemWrapper = styled(Link)`
   padding: 0 10px;
   display: block;
   .item-content {
     border-radius: 12px;
-    border: 1px solid ${(props) => props.theme.colors.black15};
+    border: 1px solid ${theme.colors.black15};
     border-radius: 12px;
     padding: 16px;
     height: 100%;
@@ -29,8 +30,8 @@ export const ShowsItemWrapper = styled(Link)`
     .rating,
     .premiere {
       border-radius: 51px;
-      border: 1px solid ${(props) => props.theme.colors.black15};
-      background: ${(props) => props.theme.colors.secondary};
+      border: 1px solid ${theme.colors.black15};
+      background: ${theme.colors.secondary};
       padding: 2px 10px;
       column-gap: 6px;
 

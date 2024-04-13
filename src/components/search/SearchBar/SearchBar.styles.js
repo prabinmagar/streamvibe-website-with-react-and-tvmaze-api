@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { theme } from "../../../styles/theme/theme";
 
 export const SearchBarWrapper = styled.div`
   .searchbar-top {
@@ -15,11 +16,11 @@ export const SearchBarWrapper = styled.div`
   .search-box {
     position: relative;
     column-gap: 16px;
-    background-color: ${(props) => props.theme.colors.black15};
+    background-color: ${theme.colors.black15};
     border-radius: 100vh;
     min-width: 600px;
     padding: 16px 24px;
-    border: 1px solid ${(props) => props.theme.colors.gray60};
+    border: 1px solid ${theme.colors.gray60};
 
     .search-icon {
       width: 25px;
@@ -36,8 +37,8 @@ export const SearchBarWrapper = styled.div`
         outline: 0;
         padding: 2px;
         font-family: inherit;
-        color: ${(props) => props.theme.colors.gray60};
-        caret-color: ${(props) => props.theme.colors.gray60};
+        color: ${theme.colors.gray60};
+        caret-color: ${theme.colors.gray60};
       }
     }
 

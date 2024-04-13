@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { media } from "../../../../styles/theme/theme";
+import { media, theme } from "../../../../styles/theme/theme";
 
 export const GenreItemWrapper = styled.div`
   margin: 0 15px;
@@ -9,7 +9,7 @@ export const GenreItemWrapper = styled.div`
   `}
 
   .item-content {
-    background: ${(props) => props.theme.colors.black10};
+    background: ${theme.colors.black10};
     padding: 20px;
     border-radius: 12px;
 

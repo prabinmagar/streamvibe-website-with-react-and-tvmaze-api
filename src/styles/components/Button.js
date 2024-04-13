@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
-import { media } from "../theme/theme";
+import { media, theme } from "../theme/theme";
 
 const commonButtonStyles = css`
   font-family: inherit;
@@ -13,11 +13,11 @@ const commonButtonStyles = css`
   border: 1px solid;
   padding: 3px 24px;
   column-gap: 8px;
-  box-shadow: ${(props) => props.theme.shadows.medium};
+  box-shadow: ${theme.shadows.medium};
   font-weight: 600;
   white-space: nowrap;
   border-radius: 6px;
-  transition: ${(props) => props.theme.transitions.allEaseInOut};
+  transition: ${theme.transitions.allEaseInOut};
 
   ${media.lg`
     min-width: auto;
@@ -26,15 +26,15 @@ const commonButtonStyles = css`
   `}
 
   .btn-text {
-    color: ${(props) => props.theme.colors.white};
-    font-size: ${(props) => props.theme.typography.fontSize.large};
+    color: ${theme.colors.white};
+    font-size: ${theme.typography.fontSize.large};
 
     ${media.lg`
-      font-size: ${(props) => props.theme.typography.fontSize.medium}
+      font-size: ${theme.typography.fontSize.medium}
     `}
 
     ${media.sm`
-      font-size: ${(props) => props.theme.typography.fontSize.small}
+      font-size: ${theme.typography.fontSize.small}
     `}
   }
 
@@ -50,7 +50,7 @@ const commonButtonStyles = css`
   }
 
   &:hover {
-    color: ${(props) => props.theme.colors.white};
+    color: ${theme.colors.white};
     opacity: 0.8;
   }
 
@@ -69,23 +69,23 @@ const BaseLink = styled(Link)`
 `;
 
 const BaseButtonPrimary = styled(BaseButton)`
-  background-color: ${(props) => props.theme.colors.primary};
-  border-color: ${(props) => props.theme.colors.primary};
+  background-color: ${theme.colors.primary};
+  border-color: ${theme.colors.primary};
 `;
 
 const BaseLinkPrimary = styled(BaseLink)`
-  background-color: ${(props) => props.theme.colors.primary};
-  border-color: ${(props) => props.theme.colors.primary};
+  background-color: ${theme.colors.primary};
+  border-color: ${theme.colors.primary};
 `;
 
 const BaseButtonSecondary = styled(BaseButton)`
-  background-color: ${(props) => props.theme.colors.secondary};
-  border-color: ${(props) => props.theme.colors.black15};
+  background-color: ${theme.colors.secondary};
+  border-color: ${theme.colors.black15};
 `;
 
 const BaseLinkSecondary = styled(BaseLink)`
-  background-color: ${(props) => props.theme.colors.secondary};
-  border-color: ${(props) => props.theme.colors.black15};
+  background-color: ${theme.colors.secondary};
+  border-color: ${theme.colors.black15};
 `;
 
 export {

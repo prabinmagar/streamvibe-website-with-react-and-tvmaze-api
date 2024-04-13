@@ -1,6 +1,7 @@
 // # Global styles (CSS, fonts, etc.)
 import { createGlobalStyle } from "styled-components";
 import { media } from "../theme/theme";
+import { theme } from "../theme/theme";
 
 export const GlobalStyles = createGlobalStyle`
     * {
@@ -13,16 +14,12 @@ export const GlobalStyles = createGlobalStyle`
         scroll-behavior: smooth;
     }
 
-    html.smooth-scroll {
-        scroll-behavior: auto;
-    }
-
     /* body styles */
     body {
-        background: ${(props) => props.theme.colors.secondary};
-        color: ${(props) => props.theme.colors.white};
-        font-family: ${(props) => props.theme.typography.fontFamily};
-        line-height: ${(props) => props.theme.typography.lineHeight.medium};
+        background: ${theme.colors.secondary};
+        color: ${theme.colors.white};
+        font-family: ${theme.typography.fontFamily};
+        line-height: ${theme.typography.lineHeight.medium};
     }
 
     ul {
@@ -37,47 +34,47 @@ export const GlobalStyles = createGlobalStyle`
     
     /* Link styles */
     a {
-        color: ${(props) => props.theme.colors.white};
+        color: ${theme.colors.white};
         text-decoration: none;
-        transition: ${(props) => props.theme.transitions.allEaseInOut};
+        transition: ${theme.transitions.allEaseInOut};
 
         &:hover {
-            color: ${(props) => props.theme.colors.white};
+            color: ${theme.colors.white};
             opacity: 0.9;
         }
     }
 
     /* Typography styles */
     h1, h2, h3, h4, h5, h6 {
-        margin-top: ${(props) => props.theme.spacing.md};
-        margin-bottom: ${(props) => props.theme.spacing.sm};
-        font-weight: ${(props) => props.theme.typography.fontWeight.bold};
-        color: ${(props) => props.theme.colors.white};
+        margin-top: ${theme.spacing.md};
+        margin-bottom: ${theme.spacing.sm};
+        font-weight: ${theme.typography.fontWeight.bold};
+        color: ${theme.colors.white};
         line-height: 1.4;
     }
     h1 {
-        font-size: ${(props) => props.theme.typography.fontSize.superTitle};
+        font-size: ${theme.typography.fontSize.superTitle};
     }
 
     h2 {
-        font-size: ${(props) => props.theme.typography.fontSize.title};
+        font-size: ${theme.typography.fontSize.title};
     }
 
     h3 {
-        font-size: ${(props) => props.theme.typography.fontSize.xxlarge};
+        font-size: ${theme.typography.fontSize.xxlarge};
     }
 
     p {
-        font-size: ${(props) => props.theme.typography.fontSize.large};
-        line-height: ${(props) => props.theme.typography.lineHeight.medium};
+        font-size: ${theme.typography.fontSize.large};
+        line-height: ${theme.typography.lineHeight.medium};
     }
 
     /* Button styles */
     button {
         border: none;
-        border-radius: ${(props) => props.theme.borders.radius};
+        border-radius: ${theme.borders.radius};
         cursor: pointer;
-        transition: ${(props) => props.theme.allEaseInOut};
+        transition: ${theme.allEaseInOut};
         outline: 0;
     }
 
@@ -170,39 +167,39 @@ export const GlobalStyles = createGlobalStyle`
 
     // font weights
     .font-extralight {
-        font-weight: ${(props) => props.theme.typography.fontWeight.extraLight};
+        font-weight: ${theme.typography.fontWeight.extraLight};
     }
     .font-light {
-        font-weight: ${(props) => props.theme.typography.fontWeight.light};
+        font-weight: ${theme.typography.fontWeight.light};
     }
     .font-regular {
-        font-weight: ${(props) => props.theme.typography.fontWeight.regular};
+        font-weight: ${theme.typography.fontWeight.regular};
     }
     .font-medium {
-        font-weight: ${(props) => props.theme.typography.fontWeight.medium};
+        font-weight: ${theme.typography.fontWeight.medium};
     }
     .font-semibold {
-        font-weight: ${(props) => props.theme.typography.fontWeight.semibold};
+        font-weight: ${theme.typography.fontWeight.semibold};
     }
     .font-bold {
-        font-weight: ${(props) => props.theme.typography.fontWeight.bold};
+        font-weight: ${theme.typography.fontWeight.bold};
     }
     
     // text color classes
     .text-primary{
-        color: ${(props) => props.theme.colors.primary};
+        color: ${theme.colors.primary};
     }
     .text-secondary{
-        color: ${(props) => props.theme.colors.secondary};
+        color: ${theme.colors.secondary};
     }
     .text-white{
-        color: ${(props) => props.theme.colors.white};
+        color: ${theme.colors.white};
     }
     .text-black{
-        color: ${(props) => props.theme.colors.primary};
+        color: ${theme.colors.primary};
     }
     .text-gray60{
-        color: ${(props) => props.theme.colors.gray60};
+        color: ${theme.colors.gray60};
     }
 
     // text realted classes
@@ -234,88 +231,74 @@ export const GlobalStyles = createGlobalStyle`
         background-color: transparent;
     }
     .bg-primary{
-        background-color: ${(props) => props.theme.colors.primary};
+        background-color: ${theme.colors.primary};
     }
     .bg-secondary{
-        background-color: ${(props) => props.theme.colors.secondary};
+        background-color: ${theme.colors.secondary};
     }
     .bg-white{
-        background-color: ${(props) => props.theme.colors.white};
+        background-color: ${theme.colors.white};
     }
     .bg-black{
-        background-color: ${(props) => props.theme.colors.primary};
+        background-color: ${theme.colors.primary};
     }
     .bg-black06{
-        background-color: ${(props) => props.theme.colors.black06};
+        background-color: ${theme.colors.black06};
     }
     .bg-black10{
-        background-color: ${(props) => props.theme.colors.black10};
+        background-color: ${theme.colors.black10};
     }
     .bg-black12{
-        background-color: ${(props) => props.theme.colors.black12};
+        background-color: ${theme.colors.black12};
     }
 
     // text size classes
     .text-xs{
-        font-size: ${(props) =>
-          props.theme.typography.fontSize.xsmall}!important;
+        font-size: ${theme.typography.fontSize.xsmall}!important;
     }
     .text-sm{
-        font-size: ${(props) =>
-          props.theme.typography.fontSize.small}!important;
+        font-size: ${theme.typography.fontSize.small}!important;
     }
     .text-md{
-        font-size: ${(props) =>
-          props.theme.typography.fontSize.medium}!important;
+        font-size: ${theme.typography.fontSize.medium}!important;
     }
     .text-lg{
-        font-size: ${(props) =>
-          props.theme.typography.fontSize.large}!important;
+        font-size: ${theme.typography.fontSize.large}!important;
     }
     .text-xl{
-        font-size: ${(props) =>
-          props.theme.typography.fontSize.xlarge}!important;
+        font-size: ${theme.typography.fontSize.xlarge}!important;
     }
 
     ${media.lg`
         .text-xs{
-            font-size: ${(props) =>
-              props.theme.typography.fontSize.xxsmall}!important;
+            font-size: ${theme.typography.fontSize.xxsmall}!important;
         }
         .text-sm{
-            font-size: ${(props) =>
-              props.theme.typography.fontSize.xsmall}!important;
+            font-size: ${theme.typography.fontSize.xsmall}!important;
         }
         .text-md{
-            font-size: ${(props) =>
-              props.theme.typography.fontSize.small}!important;
+            font-size: ${theme.typography.fontSize.small}!important;
         }
         .text-lg{
-            font-size: ${(props) =>
-              props.theme.typography.fontSize.medium}!important;
+            font-size: ${theme.typography.fontSize.medium}!important;
         }
         .text-xl{
-            font-size: ${(props) =>
-              props.theme.typography.fontSize.large}!important;
+            font-size: ${theme.typography.fontSize.large}!important;
         }
     `}
 
     ${media.lg`
         .text-sm{
-            font-size: ${(props) =>
-              props.theme.typography.fontSize.xxsmall}!important;
+            font-size: ${theme.typography.fontSize.xxsmall}!important;
         }
         .text-md{
-            font-size: ${(props) =>
-              props.theme.typography.fontSize.xsmall}!important;
+            font-size: ${theme.typography.fontSize.xsmall}!important;
         }
         .text-lg{
-            font-size: ${(props) =>
-              props.theme.typography.fontSize.small}!important;
+            font-size: ${theme.typography.fontSize.small}!important;
         }
         .text-xl{
-            font-size: ${(props) =>
-              props.theme.typography.fontSize.medium}!important;
+            font-size: ${theme.typography.fontSize.medium}!important;
         }
     `}
 

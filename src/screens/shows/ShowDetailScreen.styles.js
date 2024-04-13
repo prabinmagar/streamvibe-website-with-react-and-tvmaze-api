@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { media } from "../../styles/theme/theme";
+import { media, theme } from "../../styles/theme/theme";
 
 export const ShowDetailContent = styled.div`
   display: flex;
@@ -21,8 +21,8 @@ export const ShowDetailContent = styled.div`
 
   .detail-block {
     padding: 40px;
-    background-color: ${(props) => props.theme.colors.black10};
-    border: 1px solid ${(props) => props.theme.colors.black15};
+    background-color: ${theme.colors.black10};
+    border: 1px solid ${theme.colors.black15};
     border-radius: 12px;
     margin-bottom: 30px;
 

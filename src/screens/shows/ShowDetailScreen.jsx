@@ -29,8 +29,6 @@ const ShowDetailScreen = () => {
   const error = useSelector((state) => state.shows.error);
   const showMetaData = useSelector(selectShowMetadata);
 
-  console.log(isLoading)
-
   useEffect(() => {
     dispatch(fetchSingleShow(showId));
   }, [dispatch, showId]);

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Icons } from "../../../assets/icons";
 import { Images } from "../../../assets/images";
 import { SearchBarWrapper } from "./SearchBar.styles";
@@ -16,6 +16,7 @@ const SearchBar = () => {
   const dispatch = useDispatch();
   const [searchError, setSearchError] = useState("");
   const searchResultsData = useSelector(selectSearchResults);
+  const [hasValidQuery, setHasValidQuery] = useState(false);
   const inputRef = useRef("");
 
   const isValidSearchQuery = (query) => {
@@ -28,23 +29,17 @@ const SearchBar = () => {
   const handleQuerySubmit = async (event) => {
     event.preventDefault();
     if (isValidSearchQuery(query)) {
+      dispatch(resetSearchResults());
+      setHasValidQuery(true);
       await dispatch(fetchSearchResults(query));
     } else if (query.trim().length === 0) {
       setSearchError("Please enter shows name.");
+      setHasValidQuery(false);
     } else {
       setSearchError("Please enter valid show title or name.");
+      setHasValidQuery(false);
     }
   };
-
-  const handleQueryFocus = () => setSearchError("");
-
-  useEffect(() => {
-    if (!query.trim()) {
-      dispatch(resetSearchResults());
-    }
-  }, [query, dispatch]);
-
-  const hasValidQuery = isValidSearchQuery(query);
 
   return (
     <SearchBarWrapper>
@@ -63,7 +58,6 @@ const SearchBar = () => {
                 className="text-lg font-semibold"
                 onChange={handleQueryChange}
                 ref={inputRef}
-                onFocus={handleQueryFocus}
               />
             </div>
             <button type="submit" className="search-icon bg-transparent">

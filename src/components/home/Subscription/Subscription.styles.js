@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { media } from "../../../styles/theme/theme";
+import { media, theme } from "../../../styles/theme/theme";
 
 export const SubscriptionWrapper = styled.section`
   .subs-list {
@@ -20,7 +20,7 @@ export const SubscriptionWrapper = styled.section`
 export const SubscriptionItemWrapper = styled.div`
   border-radius: 12px;
   padding: 40px;
-  border: 1px solid ${(props) => props.theme.colors.black15};
+  border: 1px solid ${theme.colors.black15};
 
   ${media.lg`
         padding: 24px;
